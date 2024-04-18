@@ -1,0 +1,22 @@
+
+
+// Parameter Name Retention Error Fix - build.gradle
+// https://github.com/spring-projects/spring-framework/wiki/Upgrading-to-Spring-Framework-6.x#parameter-name-retention
+
+tasks.withType(JavaCompile).configureEach {
+    options.compilerArgs.add("-parameters")
+}
+
+tasks.withType(GroovyCompile).configureEach {
+    groovyOptions.parameters = true
+}
+
+Sometimes it is also necessary to manually configure your IDE.
+
+In IntelliJ IDEA, open Settings and add -parameters to the following field.
+
+    Build, Execution, Deployment → Compiler → Java Compiler → Additional command line parameters
+
+In Eclipse IDE, open Preferences and activate the following checkbox. <-- SOLUTION
+
+    Java → Compiler → Store information about method parameters (usable via reflection)

@@ -7,14 +7,12 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import lombok.AllArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import net.versoft.companiescrud.entities.Category;
 import net.versoft.companiescrud.entities.Company;
 import net.versoft.companiescrud.repositories.CompanyRepository;
 
 @Service
 @Transactional
-@Slf4j
 @AllArgsConstructor
 public class CompanyServiceImpl implements CompanyService {
 
@@ -22,7 +20,7 @@ public class CompanyServiceImpl implements CompanyService {
 	
 	@Override
 	public Company createCompany(Company company) {
-		company.getWebsites().forEach(website -> {
+		company.getWebSites().forEach(website -> {
 			if (Objects.isNull(website.getCategory())) {
 				website.setCategory(Category.NONE);
 			}
